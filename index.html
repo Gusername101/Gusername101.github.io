@@ -253,7 +253,208 @@
             color: #67e8f9;
         }
 
-        /* Resume Section */
+        .project-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .screenshot-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.15), rgba(96, 165, 250, 0.15));
+            border: 1px solid #22d3ee;
+            color: #22d3ee;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .screenshot-btn:hover {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.3), rgba(96, 165, 250, 0.3));
+            box-shadow: 0 0 12px rgba(34, 211, 238, 0.3);
+        }
+
+        .project-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-card-header h3 {
+            margin-bottom: 0;
+        }
+
+        .project-badge {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .project-badge.paid {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #4ade80;
+        }
+
+        .project-badge.legacy {
+            background: rgba(148, 163, 184, 0.15);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            color: #94a3b8;
+        }
+
+        .project-badge.academic {
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            color: #a78bfa;
+        }
+
+        /* Screenshot Gallery */
+        .screenshot-gallery {
+            margin-bottom: 8px;
+        }
+
+        .screenshot-main {
+            position: relative;
+            width: 100%;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 12px;
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .screenshot-main img {
+            width: 100%;
+            height: auto;
+            max-height: 420px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .screenshot-main.img-missing img {
+            display: none;
+        }
+
+        .img-placeholder {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: #475569;
+            font-size: 13px;
+        }
+
+        .img-placeholder i {
+            font-size: 36px;
+            color: #334155;
+        }
+
+        .screenshot-main.img-missing .img-placeholder {
+            display: flex;
+        }
+
+        .screenshot-thumbs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .screenshot-thumbs .thumb {
+            width: 80px;
+            height: 52px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 2px solid #334155;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            opacity: 0.7;
+        }
+
+        .screenshot-thumbs .thumb:hover,
+        .screenshot-thumbs .thumb.active {
+            border-color: #22d3ee;
+            opacity: 1;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(6px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            max-width: 820px;
+            width: 100%;
+            padding: 36px;
+            position: relative;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover { color: #e2e8f0; }
+
+        .modal-box h3 {
+            font-size: 22px;
+            color: #22d3ee;
+            margin-bottom: 8px;
+        }
+
+        .modal-box .modal-subtitle {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-box .modal-subtitle i {
+            color: #f59e0b;
+        }
+
+
+        /* Screenshot Modal */
         #resume {
             background-color: #0f172a;
         }
@@ -442,8 +643,8 @@
         <div class="section-content">
             <div class="hero-content">
                 <h1>Jared Keller</h1>
-                <p class="title">Computer Science Portfolio</p>
-                <p>Motivated developer helping create a difference through app development</p>
+                <p class="title">Computer Science Student & Software Developer</p>
+                <p>CS senior at Texas A&M University–Kingsville building real-world software solutions. Currently maintaining a paid cloud-based system for a university department.</p>
                 <button class="cta-btn" onclick="scrollToSection('projects')">
                     View Projects
                     <i class="fas fa-chevron-down"></i>
@@ -457,35 +658,76 @@
         <div class="section-content">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
+
+                <!-- LabGuy Web -->
                 <div class="project-card">
-                    <h3>Cloud-Based Inventory Management System</h3>
-                    <p>Developed a custom cloud-based system to digitize and optimize storage tracking for Texas A&M's Animal Science Department. Integrated Firebase backend, designed a user-friendly interface for non-technical staff, and improved data reliability while eliminating costly local hosting.
-                        Currently maintain and support the system as a paid IT developer, resolving issues and implementing feature updates for the department.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">IT Support</span>
-                        <span class="tech-tag">REST API</span>
-                        <span class="tech-tag">PyQt5</span>
+                    <div class="project-card-header">
+                        <h3>LabGuy — Web</h3>
+                        <span class="project-badge paid">Paid Project</span>
                     </div>
-                    <a href="https://github.com/Gusername101" class="project-link">
-                        View More <i class="fas fa-external-link-alt"></i>
-                    </a>
+                    <p>The current production version of LabGuy — a cloud-based web application actively used by Texas A&M University–Kingsville's Animal Science Department. Rebuilt from the desktop client into a fully accessible multi-device web app with Firebase on the backend. Many of the features in this version were ideas I originally pushed to implement during the Bioware phase. Currently providing paid ongoing maintenance and updates.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML/CSS/JS</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">REST API</span>
+                        <span class="tech-tag">Cloud Firestore</span>
+                    </div>
+                    <div class="project-actions">
+                        <button class="screenshot-btn" onclick="openModal('modalWeb')">
+                            <i class="fas fa-images"></i> View Screenshots
+                        </button>
+                        <a href="https://github.com/Gusername101" class="project-link">
+                            GitHub <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
 
+                <!-- LabGuy Legacy -->
                 <div class="project-card">
-                    <h3>Bioware - Inventory Management Prototype</h3>
-                    <p>Built an early prototype of an inventory tracking tool as part of Senior Design coursework. Implemented functionality for storing and retrieving inventory data with a focus on simple design and usability. Served as the foundation for the advanced paid Cloud-Based Inventory Management System.</p>
+                    <div class="project-card-header">
+                        <h3>LabGuy (Legacy)</h3>
+                        <span class="project-badge paid">Paid Project</span>
+                    </div>
+                    <p>The first paid version of LabGuy — a desktop application built with Python and PyQt5. After the department saw the progress made during Senior Design, I was selected to help develop a proper paid solution. Features I had independently pushed to implement during Bioware carried directly into this version and later into the web app.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyQt5</span>
                         <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">PyQT5</span>
-                        <span class="tech-tag">Senior Project</span>
+                        <span class="tech-tag">Desktop App</span>
                     </div>
-                    <a href="https://github.com/Gusername101" class="project-link">
-                        View More <i class="fas fa-external-link-alt"></i>
-                    </a>
+                    <div class="project-actions">
+                        <button class="screenshot-btn" onclick="openModal('modalLegacy')">
+                            <i class="fas fa-images"></i> View Screenshots
+                        </button>
+                        <a href="https://github.com/Gusername101" class="project-link">
+                            GitHub <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Bioware -->
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <h3>Bioware</h3>
+                        <span class="project-badge academic">Senior Design</span>
+                    </div>
+                    <p>The original proof-of-concept that started it all. Developed as part of a Senior Design team to address a real inventory problem in Texas A&M University–Kingsville's Animal Science Department. While still primitive compared to what LabGuy became, it was the project where I first went beyond my assigned tasks — independently implementing additional features that caught the department's attention and ultimately led to the paid work that followed.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyQt5</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Team Project</span>
+                    </div>
+                    <div class="project-actions">
+                        <button class="screenshot-btn" onclick="openModal('modalBioware')">
+                            <i class="fas fa-images"></i> View Screenshots
+                        </button>
+                        <a href="https://github.com/Gusername101" class="project-link">
+                            GitHub <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -498,9 +740,9 @@
             <div class="resume-section">
                 <h3>Experience</h3>
                 <div class="experience-item">
-                    <h4>Paid Developer - Cloud-Based Inventory Management System</h4>
-                    <p class="date">Texas A&M University - Kingsville Animal Science Department | Current</p>
-                    <p>Providing ongoing maintenance, bug fixes, and feature improvements to the cloud-based inventory system</p>
+                    <h4>Paid Developer — LabGuy (Legacy & Web)</h4>
+                    <p class="date">Texas A&M University - Kingsville, Animal Science Department | Current</p>
+                    <p>Selected to build a paid desktop inventory application following Senior Design, based on initiative and features independently implemented during the Bioware project. Later migrated the system to a full web application. Currently providing ongoing paid maintenance and updates.</p>
                 </div>
                 <div class="experience-item">
                     <h4>DoorDash Driver</h4>
@@ -514,7 +756,7 @@
                 <div class="skills-grid">
                     <div class="skill-box">
                         <h4>Programming Languages</h4>
-                        <p>Python, Java, C++</p>
+                        <p>Python, Java, C++, HTML, CSS, JavaScript</p>
                     </div>
                     <div class="skill-box">
                         <h4>Technologies & Frameworks</h4>
@@ -536,7 +778,7 @@
                 <div class="experience-item">
                     <h4>Bachelor of Science in Computer Science</h4>
                     <p class="date">Texas A&M University - Kingsville | Expected May 2026</p>
-                    <p>Senior year | Texas Leadership Scholar (mentorship & academic leadership program)</p>
+                    <p>Senior | Texas Leadership Scholar (mentorship & academic leadership program)</p>
                 </div>
                 <div class="experience-item">
                     <h4>High School Diploma</h4>
@@ -552,10 +794,10 @@
             <h2 class="section-title">Get In Touch</h2>
             
             <div class="contact-grid">
-                <a href="mailto:keljar578@gmail.com" class="contact-card">
+                <a href="/cdn-cgi/l/email-protection#6a010f06000b185f5d522a0d070b030644090507" class="contact-card">
                     <i class="fas fa-envelope"></i>
                     <h3>Email</h3>
-                    <p>keljar578@gmail.com</p>
+                    <p><span class="__cf_email__" data-cfemail="8be0eee7e1eaf9bebcb3cbece6eae2e7a5e8e4e6">[email&#160;protected]</span></p>
                 </a>
 
                 <a href="https://linkedin.com/in/jared-keller062026" target="_blank" rel="noopener noreferrer" class="contact-card">
@@ -577,12 +819,114 @@
         </div>
     </section>
 
+    <!-- Screenshot Modal: LabGuy Web -->
+    <div class="modal-overlay" id="modalWeb" onclick="handleModalClick(event, 'modalWeb')">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalWeb')"><i class="fas fa-times"></i></button>
+            <h3>LabGuy — Web</h3>
+            <p class="modal-subtitle">
+                <i class="fas fa-globe"></i>
+                Active web application · Texas A&M University–Kingsville, Animal Science Department
+            </p>
+            <div class="screenshot-gallery" id="galleryWeb">
+                <!-- Add your screenshots to images/labguy-web-1.png, labguy-web-2.png, etc. -->
+                <div class="screenshot-main">
+                    <img src="images/labguy-web-1.png" alt="LabGuy Web — Screenshot 1" onerror="this.parentElement.classList.add('img-missing')" />
+                    <div class="img-placeholder"><i class="fas fa-image"></i><span>images/labguy-web-1.png</span></div>
+                </div>
+                <div class="screenshot-thumbs" id="thumbsWeb">
+                    <img src="images/labguy-web-1.png" class="thumb active" onclick="setMain('galleryWeb', this)" alt="Screenshot 1" onerror="this.style.display='none'" />
+                    <img src="images/labguy-web-2.png" class="thumb" onclick="setMain('galleryWeb', this)" alt="Screenshot 2" onerror="this.style.display='none'" />
+                    <img src="images/labguy-web-3.png" class="thumb" onclick="setMain('galleryWeb', this)" alt="Screenshot 3" onerror="this.style.display='none'" />
+                    <img src="images/labguy-web-4.png" class="thumb" onclick="setMain('galleryWeb', this)" alt="Screenshot 4" onerror="this.style.display='none'" />
+                    <img src="images/labguy-web-5.png" class="thumb" onclick="setMain('galleryWeb', this)" alt="Screenshot 5" onerror="this.style.display='none'" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screenshot Modal: LabGuy Legacy -->
+    <div class="modal-overlay" id="modalLegacy" onclick="handleModalClick(event, 'modalLegacy')">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalLegacy')"><i class="fas fa-times"></i></button>
+            <h3>LabGuy (Legacy)</h3>
+            <p class="modal-subtitle">
+                <i class="fas fa-desktop"></i>
+                Desktop application · Python / PyQt5 · Senior Design Project
+            </p>
+            <div class="screenshot-gallery" id="galleryLegacy">
+                <!-- Add your screenshots to images/labguy-legacy-1.png, labguy-legacy-2.png, etc. -->
+                <div class="screenshot-main">
+                    <img src="images/labguy-legacy-1.png" alt="LabGuy Legacy — Screenshot 1" onerror="this.parentElement.classList.add('img-missing')" />
+                    <div class="img-placeholder"><i class="fas fa-image"></i><span>images/labguy-legacy-1.png</span></div>
+                </div>
+                <div class="screenshot-thumbs" id="thumbsLegacy">
+                    <img src="images/labguy-legacy-1.png" class="thumb active" onclick="setMain('galleryLegacy', this)" alt="Screenshot 1" onerror="this.style.display='none'" />
+                    <img src="images/labguy-legacy-2.png" class="thumb" onclick="setMain('galleryLegacy', this)" alt="Screenshot 2" onerror="this.style.display='none'" />
+                    <img src="images/labguy-legacy-3.png" class="thumb" onclick="setMain('galleryLegacy', this)" alt="Screenshot 3" onerror="this.style.display='none'" />
+                    <img src="images/labguy-legacy-4.png" class="thumb" onclick="setMain('galleryLegacy', this)" alt="Screenshot 4" onerror="this.style.display='none'" />
+                    <img src="images/labguy-legacy-5.png" class="thumb" onclick="setMain('galleryLegacy', this)" alt="Screenshot 5" onerror="this.style.display='none'" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screenshot Modal: Bioware -->
+    <div class="modal-overlay" id="modalBioware" onclick="handleModalClick(event, 'modalBioware')">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modalBioware')"><i class="fas fa-times"></i></button>
+            <h3>Bioware</h3>
+            <p class="modal-subtitle">
+                <i class="fas fa-graduation-cap"></i>
+                Senior Design Project · Texas A&M University–Kingsville
+            </p>
+            <div class="screenshot-gallery" id="galleryBioware">
+                <!-- Add your screenshots to images/bioware-1.png, bioware-2.png, etc. -->
+                <div class="screenshot-main">
+                    <img src="images/bioware-1.png" alt="Bioware — Screenshot 1" onerror="this.parentElement.classList.add('img-missing')" />
+                    <div class="img-placeholder"><i class="fas fa-image"></i><span>images/bioware-1.png</span></div>
+                </div>
+                <div class="screenshot-thumbs">
+                    <img src="images/bioware-1.png" class="thumb active" onclick="setMain('galleryBioware', this)" alt="Screenshot 1" onerror="this.style.display='none'" />
+                    <img src="images/bioware-2.png" class="thumb" onclick="setMain('galleryBioware', this)" alt="Screenshot 2" onerror="this.style.display='none'" />
+                    <img src="images/bioware-3.png" class="thumb" onclick="setMain('galleryBioware', this)" alt="Screenshot 3" onerror="this.style.display='none'" />
+                    <img src="images/bioware-4.png" class="thumb" onclick="setMain('galleryBioware', this)" alt="Screenshot 4" onerror="this.style.display='none'" />
+                    <img src="images/bioware-5.png" class="thumb" onclick="setMain('galleryBioware', this)" alt="Screenshot 5" onerror="this.style.display='none'" />
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <p>&copy; 2025 Jared Keller. All rights reserved.</p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleModalClick(e, id) {
+            if (e.target === document.getElementById(id)) closeModal(id);
+        }
+
+        function setMain(galleryId, thumb) {
+            const gallery = document.getElementById(galleryId);
+            const mainImg = gallery.querySelector('.screenshot-main img');
+            const mainSlot = gallery.querySelector('.screenshot-main');
+            mainImg.src = thumb.src;
+            mainSlot.classList.remove('img-missing');
+            gallery.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        }
+
         let currentSection = 'home';
 
         function scrollToSection(sectionId) {
@@ -618,23 +962,17 @@
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section');
             let currentScrollSection = '';
-
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
                 if (window.scrollY >= sectionTop - 200) {
                     currentScrollSection = section.getAttribute('id');
                 }
             });
-
-            if (currentScrollSection) {
+            if (currentScrollSection && currentScrollSection !== currentSection) {
                 currentSection = currentScrollSection;
                 updateNavigation();
             }
         });
-
-        // Initialize
-        updateNavigation();
     </script>
 </body>
 </html>

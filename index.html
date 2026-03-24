@@ -392,6 +392,44 @@
             opacity: 1;
         }
 
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-bottom: 12px;
+            padding: 0 2px;
+        }
+
+        .caption-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .caption-sub {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .modal-disclaimer {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            background: rgba(96, 165, 250, 0.07);
+            border: 1px solid rgba(96, 165, 250, 0.25);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        .modal-disclaimer i {
+            color: #60a5fa;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
         /* Modal Overlay */
         .modal-overlay {
             display: none;
@@ -458,11 +496,7 @@
         #resume {
             background-color: #0f172a;
         }
-
-        .resume-content {
-            space-y-12: space-y-12;
-        }
-
+       
         .resume-section {
             margin-bottom: 48px;
             animation: slideInLeft 0.7s ease-in;
@@ -662,7 +696,7 @@
                 <!-- LabGuy Web -->
                 <div class="project-card">
                     <div class="project-card-header">
-                        <h3>LabGuy — Web</h3>
+                        <h3>LabGuy (Web)</h3>
                         <span class="project-badge paid">Paid Project</span>
                     </div>
                     <p>The current production version of LabGuy — a cloud-based web application actively used by Texas A&M University–Kingsville's Animal Science Department. Rebuilt from the desktop client into a fully accessible multi-device web app with Firebase on the backend. Many of the features in this version were ideas I originally pushed to implement during the Bioware phase. Currently providing paid ongoing maintenance and updates.</p>
@@ -794,10 +828,10 @@
             <h2 class="section-title">Get In Touch</h2>
             
             <div class="contact-grid">
-                <a href="/cdn-cgi/l/email-protection#6a010f06000b185f5d522a0d070b030644090507" class="contact-card">
+                <a href="mailto:keljar578@gmail.com" class="contact-card">
                     <i class="fas fa-envelope"></i>
                     <h3>Email</h3>
-                    <p><span class="__cf_email__" data-cfemail="8be0eee7e1eaf9bebcb3cbece6eae2e7a5e8e4e6">[email&#160;protected]</span></p>
+                    <p>keljar578@gmail.com</p>
                 </a>
 
                 <a href="https://linkedin.com/in/jared-keller062026" target="_blank" rel="noopener noreferrer" class="contact-card">
@@ -829,17 +863,20 @@
                 Active web application · Texas A&M University–Kingsville, Animal Science Department
             </p>
             <div class="screenshot-gallery" id="galleryWeb">
-                <!-- Add your screenshots to images/labguy-web-1.png, labguy-web-2.png, etc. -->
                 <div class="screenshot-main">
-                    <img src="images/labguy-web-1.png" alt="LabGuy Web — Screenshot 1" onerror="this.parentElement.classList.add('img-missing')" />
+                    <img src="images/labguy-web-1.png" alt="Login Screen" onerror="this.parentElement.classList.add('img-missing')" />
                     <div class="img-placeholder"><i class="fas fa-image"></i><span>images/labguy-web-1.png</span></div>
                 </div>
-                <div class="screenshot-thumbs" id="thumbsWeb">
-                    <img src="images/labguy-web-1.png" class="thumb active" onclick="setMain('galleryWeb', this)" alt="Screenshot 1" onerror="this.style.display='none'" />
-                    <img src="images/labguy-web-2.png" class="thumb" onclick="setMain('galleryWeb', this)" alt="Screenshot 2" onerror="this.style.display='none'" />
-                    <img src="images/labguy-web-3.png" class="thumb" onclick="setMain('galleryWeb', this)" alt="Screenshot 3" onerror="this.style.display='none'" />
-                    <img src="images/labguy-web-4.png" class="thumb" onclick="setMain('galleryWeb', this)" alt="Screenshot 4" onerror="this.style.display='none'" />
-                    <img src="images/labguy-web-5.png" class="thumb" onclick="setMain('galleryWeb', this)" alt="Screenshot 5" onerror="this.style.display='none'" />
+                <div class="screenshot-caption">
+                    <span class="caption-title" id="captionTitleWeb">Login Screen</span>
+                    <span class="caption-sub" id="captionSubWeb">Redesigned for web</span>
+                </div>
+                <div class="screenshot-thumbs">
+                    <img src="images/labguy-web-1.png" class="thumb active" onclick="setMain('galleryWeb', this)" alt="Screenshot 1" data-title="Login Screen" data-sub="Redesigned for web" onerror="this.style.display='none'" />
+                    <img src="images/labguy-web-2.png" class="thumb" onclick="setMain('galleryWeb', this)" alt="Screenshot 2" data-title="Main Dashboard" data-sub="Inventory table with lab capacity tracker" onerror="this.style.display='none'" />
+                    <img src="images/labguy-web-3.png" class="thumb" onclick="setMain('galleryWeb', this)" alt="Screenshot 3" data-title="Admin Dashboard" data-sub="Lab management & system controls" onerror="this.style.display='none'" />
+                    <img src="images/labguy-web-4.png" class="thumb" onclick="setMain('galleryWeb', this)" alt="Screenshot 4" data-title="Widget Picker" data-sub="Drag-and-drop dashboard customization" onerror="this.style.display='none'" />
+                    <img src="images/labguy-web-5.png" class="thumb" onclick="setMain('galleryWeb', this)" alt="Screenshot 5" data-title="Settings" data-sub="Appearance, data export & account options" onerror="this.style.display='none'" />
                 </div>
             </div>
         </div>
@@ -852,20 +889,26 @@
             <h3>LabGuy (Legacy)</h3>
             <p class="modal-subtitle">
                 <i class="fas fa-desktop"></i>
-                Desktop application · Python / PyQt5 · Senior Design Project
+                Paid desktop application · Python / PyQt5
             </p>
+            <div class="modal-disclaimer">
+                <i class="fas fa-info-circle"></i>
+                <span>This is the paid desktop version of LabGuy. Due to a known authentication issue with the underlying library, live database content may not load correctly in this version. All functionality was operational at the time of deployment.</span>
+            </div>
             <div class="screenshot-gallery" id="galleryLegacy">
-                <!-- Add your screenshots to images/labguy-legacy-1.png, labguy-legacy-2.png, etc. -->
                 <div class="screenshot-main">
-                    <img src="images/labguy-legacy-1.png" alt="LabGuy Legacy — Screenshot 1" onerror="this.parentElement.classList.add('img-missing')" />
+                    <img src="images/labguy-legacy-1.png" alt="Login Screen" onerror="this.parentElement.classList.add('img-missing')" />
                     <div class="img-placeholder"><i class="fas fa-image"></i><span>images/labguy-legacy-1.png</span></div>
                 </div>
-                <div class="screenshot-thumbs" id="thumbsLegacy">
-                    <img src="images/labguy-legacy-1.png" class="thumb active" onclick="setMain('galleryLegacy', this)" alt="Screenshot 1" onerror="this.style.display='none'" />
-                    <img src="images/labguy-legacy-2.png" class="thumb" onclick="setMain('galleryLegacy', this)" alt="Screenshot 2" onerror="this.style.display='none'" />
-                    <img src="images/labguy-legacy-3.png" class="thumb" onclick="setMain('galleryLegacy', this)" alt="Screenshot 3" onerror="this.style.display='none'" />
-                    <img src="images/labguy-legacy-4.png" class="thumb" onclick="setMain('galleryLegacy', this)" alt="Screenshot 4" onerror="this.style.display='none'" />
-                    <img src="images/labguy-legacy-5.png" class="thumb" onclick="setMain('galleryLegacy', this)" alt="Screenshot 5" onerror="this.style.display='none'" />
+                <div class="screenshot-caption">
+                    <span class="caption-title" id="captionTitleLegacy">Login Screen</span>
+                    <span class="caption-sub" id="captionSubLegacy">With Lab Guy mascot</span>
+                </div>
+                <div class="screenshot-thumbs">
+                    <img src="images/labguy-legacy-1.png" class="thumb active" onclick="setMain('galleryLegacy', this)" alt="Screenshot 1" data-title="Login Screen" data-sub="With Lab Guy mascot" onerror="this.style.display='none'" />
+                    <img src="images/labguy-legacy-2.png" class="thumb" onclick="setMain('galleryLegacy', this)" alt="Screenshot 2" data-title="Dashboard" data-sub="Customizable widget layout" onerror="this.style.display='none'" />
+                    <img src="images/labguy-legacy-3.png" class="thumb" onclick="setMain('galleryLegacy', this)" alt="Screenshot 3" data-title="Profile Settings" data-sub="Role-based account info" onerror="this.style.display='none'" />
+                    <img src="images/labguy-legacy-4.png" class="thumb" onclick="setMain('galleryLegacy', this)" alt="Screenshot 4" data-title="Settings Panel" data-sub="Quick actions & account management" onerror="this.style.display='none'" />
                 </div>
             </div>
         </div>
@@ -880,18 +923,25 @@
                 <i class="fas fa-graduation-cap"></i>
                 Senior Design Project · Texas A&M University–Kingsville
             </p>
+            <div class="modal-disclaimer">
+                <i class="fas fa-info-circle"></i>
+                <span>This is the original Senior Design prototype. Some features such as the Protocols page were still in development at the time of completion and may appear incomplete.</span>
+            </div>
             <div class="screenshot-gallery" id="galleryBioware">
-                <!-- Add your screenshots to images/bioware-1.png, bioware-2.png, etc. -->
                 <div class="screenshot-main">
-                    <img src="images/bioware-1.png" alt="Bioware — Screenshot 1" onerror="this.parentElement.classList.add('img-missing')" />
+                    <img src="images/bioware-1.png" alt="Login Screen" onerror="this.parentElement.classList.add('img-missing')" />
                     <div class="img-placeholder"><i class="fas fa-image"></i><span>images/bioware-1.png</span></div>
                 </div>
+                <div class="screenshot-caption">
+                    <span class="caption-title" id="captionTitleBioware">Login Screen</span>
+                    <span class="caption-sub" id="captionSubBioware">With TAMUK campus background</span>
+                </div>
                 <div class="screenshot-thumbs">
-                    <img src="images/bioware-1.png" class="thumb active" onclick="setMain('galleryBioware', this)" alt="Screenshot 1" onerror="this.style.display='none'" />
-                    <img src="images/bioware-2.png" class="thumb" onclick="setMain('galleryBioware', this)" alt="Screenshot 2" onerror="this.style.display='none'" />
-                    <img src="images/bioware-3.png" class="thumb" onclick="setMain('galleryBioware', this)" alt="Screenshot 3" onerror="this.style.display='none'" />
-                    <img src="images/bioware-4.png" class="thumb" onclick="setMain('galleryBioware', this)" alt="Screenshot 4" onerror="this.style.display='none'" />
-                    <img src="images/bioware-5.png" class="thumb" onclick="setMain('galleryBioware', this)" alt="Screenshot 5" onerror="this.style.display='none'" />
+                    <img src="images/bioware-1.png" class="thumb active" onclick="setMain('galleryBioware', this)" alt="Screenshot 1" data-title="Login Screen" data-sub="With TAMUK campus background" onerror="this.style.display='none'" />
+                    <img src="images/bioware-2.png" class="thumb" onclick="setMain('galleryBioware', this)" alt="Screenshot 2" data-title="Samples Inventory" data-sub="Searchable, filterable table view" onerror="this.style.display='none'" />
+                    <img src="images/bioware-3.png" class="thumb" onclick="setMain('galleryBioware', this)" alt="Screenshot 3" data-title="Import Samples" data-sub="Batch entry with auto-generated table" onerror="this.style.display='none'" />
+                    <img src="images/bioware-4.png" class="thumb" onclick="setMain('galleryBioware', this)" alt="Screenshot 4" data-title="Protocols Page" data-sub="In development" onerror="this.style.display='none'" />
+                    <img src="images/bioware-5.png" class="thumb" onclick="setMain('galleryBioware', this)" alt="Screenshot 5" data-title="Deletion Confirmation" data-sub="Multi-select with confirmation dialog" onerror="this.style.display='none'" />
                 </div>
             </div>
         </div>
@@ -902,7 +952,7 @@
         <p>&copy; 2025 Jared Keller. All rights reserved.</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         function openModal(id) {
             document.getElementById(id).classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -925,6 +975,14 @@
             mainSlot.classList.remove('img-missing');
             gallery.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
             thumb.classList.add('active');
+
+            // Update caption
+            const suffixMap = { 'galleryWeb': 'Web', 'galleryLegacy': 'Legacy', 'galleryBioware': 'Bioware' };
+            const suffix = suffixMap[galleryId];
+            const titleEl = document.getElementById('captionTitle' + suffix);
+            const subEl = document.getElementById('captionSub' + suffix);
+            if (titleEl) titleEl.textContent = thumb.dataset.title || '';
+            if (subEl) subEl.textContent = thumb.dataset.sub || '';
         }
 
         let currentSection = 'home';
